@@ -1,7 +1,7 @@
 # Synergetic-Synthesis-Oscillators-for-Korg-NTS-1
 Custom oscillator patches for the Korg NTS-1 exploring the non-octaval Synergetic Temperament System.
 
-This repository contains a set of three custom oscillator patches for the Korg NTS-1, all inspired by and implementing aspects of **Kenneth Hemmerick's Synergetic Temperament System**. This system is based on **3D wave formations and closest-packed sphere geometry** rather than traditional octave divisions, offering a unique microtonal and inharmonic sonic palette. The patches were developed using the pd2logue converter from Pure Data (.pd) files.
+This repository contains a set of three custom oscillator patches for the Korg NTS-1, all inspired by and implementing aspects of Synergetic Temperament System. This system is based on **3D wave formations and closest-packed sphere geometry** rather than traditional octave divisions, offering a unique microtonal and inharmonic sonic palette. The patches were developed using the pd2logue converter from Pure Data (.pd) files.
 
 ### The Patches
 
