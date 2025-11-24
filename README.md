@@ -130,35 +130,6 @@ Full theory documented in `docs/Synergetic_Temperament_System.pdf`
 
 ---
 
-## Building from Source
-
-### Requirements
-
-- [Pure Data](https://puredata.info/) (Vanilla)
-- [pd2logue Web Converter](https://app.boochow.com/pd2logue/) (no installation needed)
-
-### Steps
-
-1. Open `.pd` patch files from `patches/` in Pure Data
-2. Make desired modifications
-3. Go to [pd2logue converter](https://app.boochow.com/pd2logue/)
-4. Upload modified `.pd` file
-5. Select "NTS-1" as target platform
-6. Click "Convert"
-7. Download generated `.ntkdigunit` file
-8. Check memory usage in converter output (keep under 24KB for safety)
-
-### Development Tips
-
-- **Memory limit**: 32KB total (code + variables), aim for <24KB
-- **Max parameters**: 6 per oscillator
-- **Oscillator count**: Keep under 7 for memory efficiency
-- **Parameter smoothing**: Use `pack f 50` + `line~` to avoid zipper noise
-- **Integer scaling**: Use integer ranges (e.g., -100 to 100) then multiply by 0.01 internally
-- **Avoid**: Browser storage APIs, complex filters, large wavetables
-
----
-
 ## Technical Details
 
 ### NTS-1 mk1 Specifications
@@ -230,40 +201,6 @@ pitch → [principal phasor~] → cos~ → [5-stage folder] ─┐
 
 ---
 
-## Contributing
-
-Contributions welcome! When submitting patches:
-
-1. **Include both source and compiled files**:
-   - `.pd` source in `patches/`
-   - `.ntkdigunit` build in `builds/`
-
-2. **Document thoroughly**:
-   - Parameter ranges and defaults
-   - Sound character description
-   - Intended use cases
-   - Preset suggestions
-
-3. **Verify specifications**:
-   - Memory usage <24KB (check converter output)
-   - Max 6 parameters
-   - Test on actual hardware
-
-4. **Code quality**:
-   - Clean signal routing
-   - Parameter smoothing implemented
-   - No deprecated objects
-
-### Future Directions
-
-- Karplus-Strong physical modeling
-- Additional synergetic frequencies (shell 5: 21, shell 6: 30.166)
-- Granular synthesis techniques
-- Additive harmonic series
-- Alternative modulator ratios (√2, √3, √5)
-
----
-
 ## License
 
 MIT License
@@ -312,6 +249,4 @@ For questions, bug reports, or patch requests:
 - [Lines Community](https://llllllll.co/)
 
 ---
-
-*Last updated: 2024*
 
