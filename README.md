@@ -1,8 +1,10 @@
 # Synergetic-Synthesis-Oscillators-for-Korg-NTS-1
 
-Custom oscillator patches for the Korg NTS-1 exploring the non-octaval Synergetic Temperament System and advanced West Coast synthesis.
+Custom oscillator patches for the Korg NTS-1 exploring **R. Buckminster Fuller's Synergetic Geometry** applied to synthesis, plus advanced West Coast techniques.
 
-This repository contains three custom oscillator patches for the Korg NTS-1 mk1. Two patches implement Kenneth Hemmerick's **Synergetic Temperament System**, based on **3D wave formations and closest-packed sphere geometry** rather than traditional octave divisions. The third is an advanced Buchla 259-inspired complex oscillator. Together they offer unique microtonal, inharmonic, and West Coast sonic possibilities. All patches were developed using Pure Data (.pd) and converted via the pd2logue tool.
+This repository contains four custom oscillator patches for the Korg NTS-1 mk1. Three patches implement **R. Buckminster Fuller's Synergetic Geometry** (as applied to temperament by Kenneth Hemmerick), based on **3D wave formations and closest-packed sphere geometry** rather than traditional octave divisions. The fourth is an advanced Buchla 259-inspired complex oscillator, and the fifth is an FS1R-inspired formant synthesizer. Together they offer unique microtonal, inharmonic, and West Coast sonic possibilities.
+
+All patches developed using Pure Data (.pd) and converted via [pd2logue](https://app.boochow.com/pd2logue/).
 
 ---
 
@@ -10,30 +12,32 @@ This repository contains three custom oscillator patches for the Korg NTS-1 mk1.
 
 | Patch Name | Source File | Description | Core Ratios |
 |:-----------|:------------|:------------|:------------|
-| **Synergetic Bell** | `Synergetic_Bell_NTS1_Enhanced.pd` | Core Synergetic Temperament implementation with four "shells" and adjustable ratios. Frequencies derived from nodal points in vector equilibrium structures divided by 12 directions of energy propagation. Features golden ratio (φ ≈ 1.618) FM modulation. | Shells 1-4: **1.0**, **3.5**, **7.666**, **13.5** (adjustable) |
-| **Phi Bell** | `PhiBellHeavy.pd` | Optimized variant of Synergetic Bell with fixed ratios for immediate musicality. Reduced FM aggression for cleaner, more melodic bell tones. | Fixed: **1.0**, **3.5**, **7.666**, **13.5** (φ modulation) |
-| **Buchla Complex Advanced** | `BuchlaComplex.pd` | Advanced Buchla 259-inspired complex oscillator with through-zero FM, 5-stage cascading wavefolder, symmetry control for asymmetric folding, and order/balance mixing. Features sine carrier, bipolar modulator, full West Coast synthesis. | Variable (Modulator: 0.25-8×, Timbre: 0.1-20, Symmetry: ±100) |
+| **Synergetic Bell** | `Synergetic_Bell_NTS1_Enhanced.pd` | Core implementation of Fuller's Synergetic Geometry with four "shells". Frequencies derived from nodal points in vector equilibrium structures divided by 12 directions of energy propagation. Features golden ratio (φ ≈ 1.618) FM modulation. | Shells: **1.0, 3.5, 7.666, 13.5** (adjustable) |
+| **Phi Bell** | `PhiBellHeavy.pd` | Optimized variant with fixed ratios for immediate musicality. Reduced FM aggression for cleaner, melodic bell tones. | Fixed: **1.0, 3.5, 7.666, 13.5** (φ modulation) |
+| **Buchla Complex** | `BuchlaComplex.pd` | Advanced Buchla 259-inspired oscillator with through-zero FM, 5-stage cascading wavefolder, symmetry control, order/balance mixing. Full West Coast synthesis. | Variable (Mod: 0.25-8×, Timbre: 0.1-20) |
+| **Formant Partials** | `Formant_Partials_NTS1.pd` | FS1R-inspired formant synthesizer with 5 independent partials, vowel formants, and multiple harmonic series. Vocal synthesis capabilities. | Variable spectra + vowel formants |
 
 ---
 
-## Synergetic Temperament System Theory
+## Fuller's Synergetic Geometry Applied to Music
 
-Kenneth Hemmerick's system derives frequencies from **vector equilibrium** (cubo-octahedron) structures created by closest-packing spheres around a central sphere. 
+**R. Buckminster Fuller** developed Synergetic Geometry in the 1970s, describing nature's coordinate system through closest-packed spheres and vector equilibrium structures. **Kenneth Hemmerick** applied this to music in 1982, creating the Synergetic Temperament System.
 
-**Key Concepts:**
-- Frequencies = (outer shell nodal points) ÷ 12 directions of propagation
-- First four frequencies: 12÷12=1.0, 42÷12=3.5, 92÷12=7.666, 162÷12=13.5
-- System exhibits constant **acceleration rate** of 1.666… cycles/second/second
+### Key Concepts:
+
+- **Frequencies = (outer shell nodal points) ÷ 12 directions of propagation**
+- First four frequencies: 12÷12=**1.0**, 42÷12=**3.5**, 92÷12=**7.666**, 162÷12=**13.5**
+- System exhibits constant **acceleration rate** of **1.666… cps/cps**
 - **Non-octaval**: Doubling frequency-edge modulation doesn't double nodal points (synergetic behavior)
-- Ratios become progressively closer but never reach unity (similar to whole number ratios)
+- Ratios progressively approach but never reach unity
 
-The system continues: 21, 30.166, 41, 53.05, 67.666, 83.5, 101, 120.166...
+The system continues: **21, 30.166, 41, 53.05, 67.666, 83.5, 101, 120.166...**
 
-Full theory documented in `docs/Synergetic_Temperament_System.pdf`
+Full theory: `docs/Synergetic_Temperament_System.pdf`
 
 ---
 
-## NTS-1 Controls and Parameter Mapping
+## Controls & Parameters
 
 ### Synergetic Bell
 
@@ -42,11 +46,11 @@ Full theory documented in `docs/Synergetic_Temperament_System.pdf`
 | **KNOB A** | `shape` | 0.05-0.8 (0.3) | **Shell Mix** - Amplitude balance across shells 2-4 |
 | **KNOB B** | `alt` | 0-600 (150) | **FM Depth** - Modulation intensity in Hz |
 | **TYPE +** | `harm2` | 1-8 (3.5) | **Shell 2 Ratio** - Adjustable frequency multiplier |
-| **TYPE +** | `harm3` | 1-16 (7.666) | **Shell 3 Ratio** - Explore other synergetic frequencies |
+| **TYPE +** | `harm3` | 1-16 (7.666) | **Shell 3 Ratio** - Explore synergetic frequencies |
 | **TYPE +** | `harm4` | 1-24 (13.5) | **Shell 4 Ratio** - Higher harmonic shells |
-| **TYPE +** | `modrat` | 0.5-3 (1.618) | **Modulator Ratio** - FM carrier frequency (φ default) |
+| **TYPE +** | `modrat` | 0.5-3 (1.618) | **Modulator Ratio** - FM carrier (φ default) |
 
-**Sound**: Rich, inharmonic bell tones with complex, evolving overtones. The golden ratio modulator creates naturally shifting timbres. Adjust shell ratios to explore the extended synergetic sequence (21, 30.166, 41, etc.).
+**Sound**: Rich, inharmonic bell tones with complex evolving overtones. Golden ratio modulator creates naturally shifting timbres. Adjust shell ratios to explore extended sequence (21, 30.166, 41...).
 
 ---
 
@@ -57,11 +61,9 @@ Full theory documented in `docs/Synergetic_Temperament_System.pdf`
 | **KNOB A** | `shape` | 0.1-1 (0.5) | **Shell Mix** - Amplitude distribution |
 | **KNOB B** | `alt` | 0-1500 (400) | **FM Depth** - Modulation intensity in Hz |
 
-**Fixed Parameters:**
-- Shell ratios: 1.0, 3.5, 7.666, 13.5
-- Modulator ratio: 1.618 (φ)
+**Fixed**: Shell ratios 1.0, 3.5, 7.666, 13.5 | Modulator 1.618 (φ)
 
-**Sound**: Cleaner, more immediately musical bell tones with the synergetic system's inharmonic character but controlled FM for melodic playing. Ideal for harmonic/melodic material.
+**Sound**: Cleaner, more musical bell tones with synergetic inharmonic character but controlled FM. Ideal for melodic material.
 
 ---
 
@@ -69,42 +71,55 @@ Full theory documented in `docs/Synergetic_Temperament_System.pdf`
 
 | Control | Parameter | Range (Default) | Function |
 |:--------|:----------|:----------------|:---------|
-| **KNOB A** | `shape` | 0.1-20 (2) | **Timbre/Wavefolder Depth** - Harmonic folding intensity |
-| **KNOB B** | `alt` | 0-2 (0.5) | **FM Amount** - Through-zero cross-modulation depth |
-| **TYPE +** | `modratio` | 0.25-8 (0.5) | **Mod Ratio** - Modulator frequency multiplier |
-| **TYPE +** | `symmetry` | -100 to 100 (0) | **Symmetry** - DC offset for asymmetric folding |
+| **KNOB A** | `shape` | 0.1-20 (2) | **Timbre/Wavefolder** - Harmonic folding intensity |
+| **KNOB B** | `alt` | 0-2 (0.5) | **FM Amount** - Through-zero cross-modulation |
+| **TYPE +** | `modratio` | 0.25-8 (0.5) | **Mod Ratio** - Modulator frequency (0.25=sub, 8=high) |
+| **TYPE +** | `symmetry` | -100 to 100 (0) | **Symmetry** - DC offset (negative=even, positive=odd) |
 | **TYPE +** | `balance` | 0-1 (0.5) | **Balance** - Principal/Modulator mix |
-| **TYPE +** | `order` | 0-1 (0.5) | **Order** - Folded/Raw crossfade |
+| **TYPE +** | `order` | 0-1 (0.5) | **Order** - Folded/Raw crossfade (Buchla 259t style) |
 
-**Timbre Guide:**
-- 0.1-1: Clean sine
-- 1-8: Progressive folding
-- 8-20: Extreme harmonics
+**Architecture**: Pure sine carrier + bipolar modulator | 5-stage wavefolder (×3, ×3, ×2, ×2, ×1.5) | Through-zero FM
 
-**Modulator Ratio Guide:**
-- 0.25: Sub-bass
-- 1.0: Unison
-- 2-8: High harmonics
+**Sound**: Classic Buchla 259 - woody plucks, metallic bells, aggressive leads, deep sub-bass.
 
-**Symmetry Guide:**
-- Negative: Even harmonics
-- Positive: Odd harmonics
+**Presets**:
+- Woody Plucks: shape=5, symmetry=20, alt=0.3, order=0.8
+- Bell Tones: shape=10, modratio=1.618, balance=0.3
+- Aggressive Leads: shape=15, alt=1.5, symmetry=-30
+- Sub Bass: modratio=0.25, shape=2, balance=0.7
 
-**Architecture:**
-- Principal: Pure sine wave carrier
-- Modulator: Bipolar ramp with variable ratio
-- 5-stage wavefolder: Cascading ×3, ×3, ×2, ×2, ×1.5 amplification + clipping
-- Through-zero FM: Modulator can push carrier frequency negative
-- Full West Coast synthesis within 32KB/6-parameter constraints
+---
 
-**Sound**: Classic Buchla 259 character - woody plucks, metallic bells, aggressive leads, deep sub-bass. Authentic West Coast synthesis textures.
+### Formant Partials (FS1R-Inspired)
 
-**Preset Suggestions:**
-- **Woody Plucks**: shape=5, symmetry=20, alt=0.3, order=0.8
-- **Bell Tones**: shape=10, modratio=1.618, balance=0.3
-- **Aggressive Leads**: shape=15, alt=1.5, symmetry=-30
-- **Sub Bass**: modratio=0.25, shape=2, balance=0.7
-- **Metallic Textures**: shape=18, symmetry=50, modratio=2, alt=1.2
+| Control | Parameter | Range (Default) | Function |
+|:--------|:----------|:----------------|:---------|
+| **KNOB A** | `shape` | 0-100 (50) | **Formant** - Amplitude envelope (0=bass, 100=bright) |
+| **KNOB B** | `alt` | 0-100 (50) | **Brightness** - Upper partial multiplier (×0.8 to ×8.8) |
+| **TYPE +** | `spectrum` | 0-4 (0) | **Spectrum Type** - Harmonic series selection |
+| **TYPE +** | `vowel` | 0-4 (0) | **Vowel Formant** - Vocal character (A/E/I/O/U) |
+| **TYPE +** | `detune` | -50 to 50 (0) | **Detune** - Chorus effect (±5%) |
+
+**Spectrum Types**:
+- 0: **Harmonic** (1,2,3,4,5) - Natural, warm
+- 1: **Odd+Even** (1,2,3,5,7) - Slightly hollow
+- 2: **Odd Only** (1,3,5,7,9) - Square wave character
+- 3: **Even Heavy** (1,2,4,6,8) - Organ-like
+- 4: **Inharmonic** (1,1.5,2.5,3.5,5) - Bell-like, FS1R style
+
+**Vowel Formants**:
+- 0: **/A/ "ah"** - Open, bright
+- 1: **/E/ "eh"** - Mid, focused
+- 2: **/I/ "ee"** - Narrow, nasal
+- 3: **/O/ "oh"** - Round, dark
+- 4: **/U/ "oo"** - Very round
+
+**Sound**: Clean vocal synthesis, FS1R-style pads, formant-shaped tones. 5 independent sine partials with vowel-like amplitude shaping.
+
+**Presets**:
+- Vocal Pad: spectrum=0, vowel=0, formant=50, brightness=40, detune=15
+- FS1R Bell: spectrum=4, vowel=2, formant=70, brightness=80
+- Warm Organ: spectrum=3, vowel=3, formant=30, brightness=50, detune=5
 
 ---
 
@@ -112,141 +127,136 @@ Full theory documented in `docs/Synergetic_Temperament_System.pdf`
 
 ### Via NTS-1 Manager (Recommended)
 
-1. Download `.ntkdigunit` files from the `builds/` directory
+1. Download `.ntkdigunit` files from `builds/`
 2. Install [Korg NTS-1 Librarian](https://www.korg.com/us/support/download/software/0/811/4881/)
 3. Connect NTS-1 via USB
 4. Launch NTS-1 Librarian
-5. Drag `.ntkdigunit` files to user oscillator slots
+5. Drag files to user oscillator slots
 6. Sync to device
 
 ### Manual Installation
 
 1. Download `.ntkdigunit` files from `builds/`
-2. Connect NTS-1 via USB (appears as USB drive)
-3. Copy files to the oscillator folder
-4. Safely eject
-5. Power cycle NTS-1
-6. Select oscillator via TYPE button
+2. Connect NTS-1 via USB (mounts as drive)
+3. Copy to oscillator folder
+4. Safely eject & power cycle
+5. Select via TYPE button
 
 ---
 
-## Technical Details
+## Building from Source
 
-### NTS-1 mk1 Specifications
+### Requirements
+- [Pure Data](https://puredata.info/) (Vanilla)
+- [pd2logue converter](https://app.boochow.com/pd2logue/) (web-based)
 
-- **Platform**: Korg logue SDK
-- **CPU**: ARM Cortex-M7
-- **Sample Rate**: 48kHz
-- **Memory**: 32KB for user oscillator (code + variables)
-- **Parameters**: Maximum 6 per oscillator
-- **File Format**: `.ntkdigunit` (NTS-1 mk1), `.mnlgxdunit` (minilogue xd)
+### Steps
+1. Open `.pd` file from `patches/` in Pure Data
+2. Make modifications
+3. Upload to pd2logue converter
+4. Select "NTS-1" target
+5. Download `.ntkdigunit` file
+6. Check memory usage (<24KB recommended)
 
-### Patch Complexity
+### Development Tips
+- **Memory**: 32KB limit, aim for <24KB
+- **Parameters**: Max 6 per oscillator
+- **Smoothing**: Use `pack f 50` + `line~`
+- **Integer params**: Scale 0-100 then multiply by 0.01
+- **Avoid**: `expr`, browser storage, complex filters
 
-| Patch | Oscillators | Parameters | Est. Memory |
-|:------|:------------|:-----------|:------------|
+---
+
+## Technical Specifications
+
+**NTS-1 mk1**:
+- Platform: Korg logue SDK
+- CPU: ARM Cortex-M7
+- Sample Rate: 48kHz
+- Memory: 32KB (code + variables)
+- File Format: `.ntkdigunit`
+
+**Patch Complexity**:
+
+| Patch | Oscillators | Parameters | Memory |
+|:------|:------------|:-----------|:-------|
 | Synergetic Bell | 5 (osc~) | 6 | ~24KB |
 | Phi Bell | 5 (osc~) | 2 | ~18KB |
 | Buchla Complex | 3 (phasor~, cos~) | 6 | ~24KB |
-
-### Signal Flow Examples
-
-**Synergetic Bell:**
-```
-pitch → [modulator × φ] → FM
-                ↓
-[shell 1] + [shell 2 × 3.5] + [shell 3 × 7.666] + [shell 4 × 13.5]
-     ↓           ↓                   ↓                    ↓
-  (+ FM)      (+ FM)              (+ FM)               (+ FM)
-     ↓           ↓                   ↓                    ↓
-  [osc~]      [osc~]              [osc~]               [osc~]
-     └───────────┴───────────────────┴────────────────────┘
-                            ↓
-                      [sum + clip] → output
-```
-
-**Buchla Complex:**
-```
-pitch → [principal phasor~] → cos~ → [5-stage folder] ─┐
-   ↓                                                     ├→ [order mix] ─┐
-   └→ [mod × ratio] → phasor~ → bipolar → [shape] ─────┘                ├→ output
-                          ↓                                              │
-                    [× FM depth] → [+ pitch] → phasor~ → cos~ ──────────┘
-                                                              [× balance]
-```
+| Formant Partials | 5 (osc~) | 6 | ~22KB |
 
 ---
 
-## Theory References
+## Theory & References
 
-### Synergetic Temperament System
-
-- **Kenneth Hemmerick**: "The Synergetic Temperament System" (1982)
+### Synergetic Geometry
 - **R. Buckminster Fuller**: "Synergetics: Explorations in the Geometry of Thinking" (1975)
+- **Kenneth Hemmerick**: "The Synergetic Temperament System" (1982)
 - Concepts: Vector equilibrium, closest-packed spheres, synergetic geometry
 - Formula: `T = (2 + 10F²) ÷ 12` where F = frequency-edge modulation
 
 ### Buchla Complex Oscillator
-
 - **Don Buchla**: 259 Complex Waveform Generator (1973)
-- **Buchla 259t**: Modern variant with Timbre/Order/Symmetry controls
-- Techniques: Through-zero FM, parallel wavefolder stages, asymmetric folding
-- West Coast synthesis philosophy: Additive/generative vs. subtractive
+- Techniques: Through-zero FM, parallel wavefolder, asymmetric folding
+- Philosophy: Additive/generative West Coast synthesis
+
+### FS1R Formant Synthesis
+- **Yamaha FS1R**: Formant Sequence Synthesis (1998)
+- Independent partial control with vocal formant shaping
+- Combines FM with formant filtering concepts
 
 ### Additional Reading
-
 - [Buchla 259 User Guide](https://modularsynthesis.com/roman/buchla259/) (1981)
-- [Vector Equilibrium](https://en.wikipedia.org/wiki/Cuboctahedron) (geometry)
+- [Vector Equilibrium](https://en.wikipedia.org/wiki/Cuboctahedron)
 - [Closest Sphere Packing](https://en.wikipedia.org/wiki/Close-packing_of_equal_spheres)
+
+---
+
+## Contributing
+
+Contributions welcome! Include:
+- `.pd` source in `patches/`
+- `.ntkdigunit` build in `builds/`
+- Parameter documentation
+- Sound descriptions & presets
+
+Verify: Memory <24KB, max 6 parameters, test on hardware
 
 ---
 
 ## License
 
-MIT License
+MIT License - Copyright (c) 2024
 
-Copyright (c) 2024
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+See LICENSE file for full text.
 
 ---
 
 ## Acknowledgments
 
-- **Kenneth Hemmerick** - Synergetic Temperament System theory and documentation
-- **Don Buchla** - Complex oscillator design and West Coast synthesis philosophy
 - **R. Buckminster Fuller** - Synergetic Geometry, vector equilibrium concepts
-- **Korg** - logue SDK platform and NTS-1 hardware
-- **boochow** - pd2logue Pure Data to logue SDK converter
+- **Kenneth Hemmerick** - Synergetic Temperament System application to music
+- **Don Buchla** - Complex oscillator design, West Coast synthesis
+- **Yamaha** - FS1R formant synthesis concepts
+- **Korg** - logue SDK and NTS-1 platform
+- **boochow** - pd2logue converter
 - **Pure Data community** - Miller Puckette and contributors
 
 ---
 
 ## Links & Resources
 
-- **[pd2logue Converter](https://app.boochow.com/pd2logue/)** - Convert Pure Data patches to NTS-1 oscillators
-- **[Korg logue SDK](https://github.com/korginc/logue-sdk)** - Official SDK documentation
-- **[NTS-1 User Manual](https://www.korg.com/us/support/download/manual/0/811/4667/)** - Hardware reference
-- **[Pure Data](https://puredata.info/)** - Visual programming language for audio
-- **[Synergetic Geometry](https://www.rwgrayprojects.com/synergetics/synergetics.html)** - Fuller's concepts online
-- **[Buchla & Associates](https://buchla.com/)** - Historic synthesizer designs
+- [pd2logue Converter](https://app.boochow.com/pd2logue/)
+- [Korg logue SDK](https://github.com/korginc/logue-sdk)
+- [NTS-1 User Manual](https://www.korg.com/us/support/download/manual/0/811/4667/)
+- [Pure Data](https://puredata.info/)
+- [Synergetic Geometry Online](https://www.rwgrayprojects.com/synergetics/synergetics.html)
 
----
-
-## Contact & Support
-
-For questions, bug reports, or patch requests:
-- Open an issue on GitHub
-- Discuss in relevant NTS-1 communities
-
-**NTS-1 Community:**
+**Community**:
+- [r/synthesizers](https://reddit.com/r/synthesizers)
 - [Korg Forums](https://www.korgforums.com/forum/korg-gear/korg-nts-1)
-- [Reddit r/synthesizers](https://www.reddit.com/r/synthesizers/)
 - [Lines Community](https://llllllll.co/)
 
 ---
 
+*Last updated: 2024*
