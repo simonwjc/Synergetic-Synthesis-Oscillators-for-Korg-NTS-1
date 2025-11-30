@@ -1,3 +1,7 @@
+!
+(images/IMG_6241.JPG)
+
+
 # Synergetic-Synthesis-Oscillators-for-Korg-NTS-1
 
 Custom oscillator patches for the Korg NTS-1 exploring **R. Buckminster Fuller's Synergetic Geometry** applied to synthesis, plus advanced West Coast techniques and classic digital emulation.
