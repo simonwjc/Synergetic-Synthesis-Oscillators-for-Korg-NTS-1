@@ -1,4 +1,4 @@
-![Korg NTS-1 Patch Overview](images/IMG_6241.JPG)
+![Korg NTS-1 Patch Overview](images/IMG_6241 cropped.jpg)
 
 
 # Synergetic-Synthesis-Oscillators-for-Korg-NTS-1
