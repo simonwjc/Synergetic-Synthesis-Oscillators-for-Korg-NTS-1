@@ -1,8 +1,8 @@
 # Synergetic-Synthesis-Oscillators-for-Korg-NTS-1
 
-Custom oscillator patches for the Korg NTS-1 exploring **R. Buckminster Fuller’s Synergetic Geometry** applied to synthesis, plus advanced West Coast techniques.
+Custom oscillator patches for the Korg NTS-1 exploring **R. Buckminster Fuller's Synergetic Geometry** applied to synthesis, plus advanced West Coast techniques and classic digital emulation.
 
-This repository contains four custom oscillator patches for the Korg NTS-1 mk1. Three patches implement **R. Buckminster Fuller’s Synergetic Geometry** (as applied to temperament by Kenneth Hemmerick), based on **3D wave formations and closest-packed sphere geometry** rather than traditional octave divisions. The fourth is an advanced Buchla 259-inspired complex oscillator, and the fifth is an FS1R-inspired formant synthesizer. Together they offer unique microtonal, inharmonic, and West Coast sonic possibilities.
+This repository contains five custom oscillator patches for the Korg NTS-1 mk1. Three patches implement **R. Buckminster Fuller's Synergetic Geometry** (as applied to temperament by Kenneth Hemmerick), based on **3D wave formations and closest-packed sphere geometry** rather than traditional octave divisions. The fourth is an advanced Buchla 259-inspired complex oscillator, the fifth is an FS1R-inspired formant synthesizer, and the sixth is a Kawai K1R-inspired dual oscillator. Together they offer unique microtonal, inharmonic, West Coast, and classic digital sonic possibilities.
 
 All patches developed using Pure Data (.pd) and converted via [pd2logue](https://app.boochow.com/pd2logue/). Download ready-to-use `.ntkdigunit` files from the releases.
 
@@ -12,23 +12,24 @@ All patches developed using Pure Data (.pd) and converted via [pd2logue](https:/
 
 |Patch Name          |File                         |Description                                                                                                                                                                                                                                    |Core Ratios                                    |
 |:-------------------|:----------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------|
-|**Synergetic Bell** |`synergetic_bell.ntkdigunit` |Core implementation of Fuller’s Synergetic Geometry with four “shells”. Frequencies derived from nodal points in vector equilibrium structures divided by 12 directions of energy propagation. Features golden ratio (φ ≈ 1.618) FM modulation.|Shells: **1.0, 3.5, 7.666, 13.5** (adjustable) |
+|**Synergetic Bell** |`synergetic_bell.ntkdigunit` |Core implementation of Fuller's Synergetic Geometry with four "shells". Frequencies derived from nodal points in vector equilibrium structures divided by 12 directions of energy propagation. Features golden ratio (φ ≈ 1.618) FM modulation.|Shells: **1.0, 3.5, 7.666, 13.5** (adjustable) |
 |**Phi Bell**        |`phi_bell.ntkdigunit`        |Optimized variant with fixed ratios for immediate musicality. Reduced FM aggression for cleaner, melodic bell tones.                                                                                                                           |Fixed: **1.0, 3.5, 7.666, 13.5** (φ modulation)|
 |**Buchla Complex**  |`buchla_complex.ntkdigunit`  |Advanced Buchla 259-inspired oscillator with through-zero FM, 5-stage cascading wavefolder, symmetry control, order/balance mixing. Full West Coast synthesis.                                                                                 |Variable (Mod: 0.25-8×, Timbre: 0.1-20)        |
 |**Formant Partials**|`formant_partials.ntkdigunit`|FS1R-inspired formant synthesizer with 5 independent partials, vowel formants, and multiple harmonic series. Vocal synthesis capabilities.                                                                                                     |Variable spectra + vowel formants              |
+|**K1R Dual**        |`k1r_dual.ntkdigunit`        |Kawai K1R-inspired dual oscillator with variable harmonic ratios and crossfade mixing. Classic late-80s digital PCM synthesis character with cold, glassy tones.                                                                               |Dual sources: **1-4× harmonics** (adjustable)  |
 
 -----
 
-## Fuller’s Synergetic Geometry Applied to Music
+## Fuller's Synergetic Geometry Applied to Music
 
-**R. Buckminster Fuller** developed Synergetic Geometry in the 1970s, describing nature’s coordinate system through closest-packed spheres and vector equilibrium structures. **Kenneth Hemmerick** applied this to music in 1982, creating the Synergetic Temperament System.
+**R. Buckminster Fuller** developed Synergetic Geometry in the 1970s, describing nature's coordinate system through closest-packed spheres and vector equilibrium structures. **Kenneth Hemmerick** applied this to music in 1982, creating the Synergetic Temperament System.
 
 ### Key Concepts:
 
 - **Frequencies = (outer shell nodal points) ÷ 12 directions of propagation**
 - First four frequencies: 12÷12=**1.0**, 42÷12=**3.5**, 92÷12=**7.666**, 162÷12=**13.5**
 - System exhibits constant **acceleration rate** of **1.666… cps/cps**
-- **Non-octaval**: Doubling frequency-edge modulation doesn’t double nodal points (synergetic behavior)
+- **Non-octaval**: Doubling frequency-edge modulation doesn't double nodal points (synergetic behavior)
 - Ratios progressively approach but never reach unity
 
 The system continues: **21, 30.166, 41, 53.05, 67.666, 83.5, 101, 120.166…**
@@ -111,11 +112,11 @@ Full theory: `docs/Synergetic_Temperament_System.pdf`
 
 **Vowel Formants**:
 
-- 0: **/A/ “ah”** - Open, bright
-- 1: **/E/ “eh”** - Mid, focused
-- 2: **/I/ “ee”** - Narrow, nasal
-- 3: **/O/ “oh”** - Round, dark
-- 4: **/U/ “oo”** - Very round
+- 0: **/A/ "ah"** - Open, bright
+- 1: **/E/ "eh"** - Mid, focused
+- 2: **/I/ "ee"** - Narrow, nasal
+- 3: **/O/ "oh"** - Round, dark
+- 4: **/U/ "oo"** - Very round
 
 **Sound**: Clean vocal synthesis, FS1R-style pads, formant-shaped tones. 5 independent sine partials with vowel-like amplitude shaping.
 
@@ -124,6 +125,28 @@ Full theory: `docs/Synergetic_Temperament_System.pdf`
 - Vocal Pad: spectrum=0, vowel=0, formant=50, brightness=40, detune=15
 - FS1R Bell: spectrum=4, vowel=2, formant=70, brightness=80
 - Warm Organ: spectrum=3, vowel=3, formant=30, brightness=50, detune=5
+
+-----
+
+### K1R Dual (Kawai K1R-Inspired)
+
+|Control   |Parameter |Range (Default)|Function                                              |
+|:---------|:---------|:--------------|:-----------------------------------------------------|
+|**KNOB A**|`shape`   |0-100 (50)     |**Osc 2 Frequency** - Harmonic multiplier (1-4×)     |
+|**KNOB B**|`alt`     |0-100 (50)     |**Mix Balance** - Crossfade between oscillators       |
+|**TYPE +**|`spectrum`|0-100 (80)     |**Overall Level** - Master output amplitude           |
+
+**Architecture**: Dual sine oscillators with independent frequency control
+
+**Sound**: Cold, glassy digital timbre reminiscent of late-80s PCM synthesis. Clean harmonic intervals with vintage digital character.
+
+**Presets**:
+
+- Glassy Pad: shape=50, alt=50, spectrum=70
+- Digital Bell: shape=75, alt=30, spectrum=80
+- Cold Lead: shape=90, alt=60, spectrum=90
+- Dual Unison: shape=0, alt=100, spectrum=80
+- Metallic Texture: shape=100, alt=40, spectrum=75
 
 -----
 
@@ -163,7 +186,7 @@ If you want to modify the patches:
 1. Open `.pd` file in Pure Data
 1. Make modifications
 1. Upload to pd2logue converter
-1. Select “NTS-1” target
+1. Select "NTS-1" target
 1. Download `.ntkdigunit` file
 1. Check memory usage (<24KB recommended)
 
@@ -195,6 +218,7 @@ If you want to modify the patches:
 |Phi Bell        |5 (osc~)         |2         |~18KB |
 |Buchla Complex  |3 (phasor~, cos~)|6         |~24KB |
 |Formant Partials|5 (osc~)         |6         |~22KB |
+|K1R Dual        |2 (osc~)         |3         |~18KB |
 
 -----
 
@@ -202,8 +226,8 @@ If you want to modify the patches:
 
 ### Synergetic Geometry
 
-- **R. Buckminster Fuller**: “Synergetics: Explorations in the Geometry of Thinking” (1975)
-- **Kenneth Hemmerick**: “The Synergetic Temperament System” (1982)
+- **R. Buckminster Fuller**: "Synergetics: Explorations in the Geometry of Thinking" (1975)
+- **Kenneth Hemmerick**: "The Synergetic Temperament System" (1982)
 - Concepts: Vector equilibrium, closest-packed spheres, synergetic geometry
 - Formula: `T = (2 + 10F²) ÷ 12` where F = frequency-edge modulation
 
@@ -219,11 +243,22 @@ If you want to modify the patches:
 - Independent partial control with vocal formant shaping
 - Combines FM with formant filtering concepts
 
+### Kawai K1/K1R Digital Synthesis
+
+- **Kawai K1**: PCM waveform + digital filter hybrid synthesizer (1988)
+- **Kawai K1R**: Rack-mount version with expanded multitimbral capability (1989)
+- Techniques: Dual PCM source mixing, digital resonant filtering, preset-based workflow
+- Philosophy: Affordable digital synthesis with distinctive "cold glass" character
+- Notable users: 808 State, The Prodigy, 90s dance/electronic production
+
 ### Additional Reading
 
 - [Buchla 259 User Guide](https://modularsynthesis.com/roman/buchla259/) (1981)
 - [Vector Equilibrium](https://en.wikipedia.org/wiki/Cuboctahedron)
 - [Closest Sphere Packing](https://en.wikipedia.org/wiki/Close-packing_of_equal_spheres)
+- [Kawai K1 Service Manual](https://www.synthxl.com/kawai-k1/) (1988)
+- [Digital Synthesis History: The Hybrid Era](https://www.vintagesynth.com/kawai/k1.php)
+- [K1 vs M1: The Digital Divide](https://www.soundonsound.com/reviews/kawai-k1r)
 
 -----
 
@@ -253,6 +288,7 @@ See LICENSE file for full text.
 - **Kenneth Hemmerick** - Synergetic Temperament System application to music
 - **Don Buchla** - Complex oscillator design, West Coast synthesis
 - **Yamaha** - FS1R formant synthesis concepts
+- **Kawai** - K1/K1R digital synthesis architecture
 - **Korg** - logue SDK and NTS-1 platform
 - **boochow** - pd2logue converter
 - **Pure Data community** - Miller Puckette and contributors
