@@ -2,7 +2,7 @@
 
 Custom oscillator patches for the Korg NTS-1 exploring **R. Buckminster Fuller's Synergetic Geometry** applied to synthesis, plus advanced West Coast techniques and classic digital emulation.
 
-This repository contains five custom oscillator patches for the Korg NTS-1 mk1. Three patches implement **R. Buckminster Fuller's Synergetic Geometry** (as applied to temperament by Kenneth Hemmerick), based on **3D wave formations and closest-packed sphere geometry** rather than traditional octave divisions. The fourth is an advanced Buchla 259-inspired complex oscillator, the fifth is an FS1R-inspired formant synthesizer, and the sixth is a Kawai K1R-inspired dual oscillator. Together they offer unique microtonal, inharmonic, West Coast, and classic digital sonic possibilities.
+This repository contains five custom oscillator patches for the Korg NTS-1 mk1. Three patches implement **R. Buckminster Fuller's Synergetic Geometry** (as applied to temperament by Kenneth Hemmerick), based on **3D wave formations and closest-packed sphere geometry** rather than traditional octave divisions. The fourth is an advanced Buchla 259-inspired complex oscillator, the fifth is an FS1R-inspired formant synthesizer, and the sixth is a Kawai K1R-inspired dual oscillator. 
 
 All patches developed using Pure Data (.pd) and converted via [pd2logue](https://app.boochow.com/pd2logue/). Download ready-to-use `.ntkdigunit` files from the releases.
 
